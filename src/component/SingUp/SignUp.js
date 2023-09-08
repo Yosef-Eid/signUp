@@ -9,12 +9,13 @@ const SignUp = () => {
     let [repeat, setRepeat] = useState('')  
     let [colorChickPAss, setColorChickPAss] = useState('')
     let [colorChickR, setColorChickR] = useState('')
+    let [colorChickName, setColorChickName] = useState('')
 
     function Accept(e) {
         e.preventDefault()
-        // setAccept(true)
-        if(password.length < 8){ setColorChickPAss('red')}
+        if(password.length < 8) setColorChickPAss('red')
         if(password !== repeat) setColorChickR('red')
+        if(name == '') setColorChickName('red') 
     }
 
     function nameValue(e) {
@@ -40,18 +41,17 @@ const SignUp = () => {
             <form className='from' onSubmit={Accept}>
                 <label htmlFor='name'>Name</label>
                 <input id='name' type='text' placeholder='name...' value={name} onChange={nameValue} />
-
+                <span style={{color:colorChickName}} className='chickName'>Pleas enter name </span>
                 <label htmlFor='emile'>Emile</label>
                 <input id='emile' type='emile' placeholder='Emile...' value={emile} onChange={emileValue} required />
 
                 <label htmlFor='password'>password</label>
                 <input id='password' type='password' placeholder='password...' value={password} onChange={passwordValue}  />
                 <span style={{color:colorChickPAss}} className='chickPassword'>password must be more than 8 char</span>
-
+            
                 <label htmlFor='repeat'>Repeat password</label>
                 <input id='repeat' type='password' placeholder='Repeat Password...' value={repeat} onChange={repeatVAlue} />
-                <span style={{color:colorChickR}} className='chickRepeat'>password</span>
-
+                <span style={{color:colorChickR}} className='chickRepeat'>password does not match</span>
                 <div style={{textAlign:'center'}}>
                     <button type='submit'>Register</button>
                 </div>
